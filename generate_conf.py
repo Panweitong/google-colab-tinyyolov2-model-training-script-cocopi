@@ -13,7 +13,7 @@ max_batches = input("Please enter the max batches you would like to train: \n")
 
 def generate_cfg():
     f = open("/content/toolkit/" + conf_directory_name +
-             "/" + project_name + ".cfg", "w")
+             "/" + project_name + "/" + project_name + ".cfg", "w")
     cfg_content = ["max_batches = " + str(max_batches) + "\n"]
     # ["[net]\n", "Training\n", "batch=64\n", "subdivisions=16\n", "width=224\n", "height=224\n", "channels=3\n", "momentum=0.9\n", "decay=0.0005\n", "angle=0\n", "saturation = 1.5\n", "exposure = 1.5\n", "hue=.1\n\n", "learning_rate=0.001\n", "burn_in=1000\n", "max_batches=" + str(int(float(classes_count))*2000) +"\n", "policy=steps\n", "steps=" + str(int(float(classes_count))*0.8) + "," + str(int(float(classes_count))*0.9) + "\n", "scales=.1,.1\n\n", "[convolutional]\n", "batch_normalize=1\n", "filters=16\n", "size=3\n", "stride=1\n", "pad=1\n", "activation=leaky\n\n", "[maxpool]\n", "size=2\n", "stride=2\n\n", "[convolutional]\n", "batch_normalize=1\n", "filters=32\n", "size=3\n", "stride=1\n", "pad=1\n", "activation=leaky\n\n", "[maxpool]\n", "size=2\n", "stride=2\n\n", "[convolutional]\n", "batch_normalize=1\n", "filters=64\n", "size=3\n", "stride=1\n", "pad=1\n", "activation=leaky\n\n", "[maxpool]\n", "size=2\n", "stride=2\n\n", "[convolutional]\n", "batch_normalize=1\n", "filters=128\n", "size=3\n", "stride=1\n", "pad=1\n", "activation=leaky\n\n", "[maxpool]\n", "size=2\n", "stride=2\n\n", "[convolutional]\n", "batch_normalize=1\n", "filters=256\n", "size=3\n", "stride=1\n", "pad=1\n", "activation=leaky\n\n", "[maxpool]\n", "size=2\n", "stride=2\n\n", "[convolutional]\n", "batch_normalize=1\n", "filters=512\n", "size=3\n", "stride=1\n", "pad=1\n", "activation=leaky\n\n", "[convolutional]\n", "size=1\n", "stride=1\n", "pad=1\n", "filters=" + str((int(float(classes_count)) + 5) * 5) + "\n", "activation=linear\n\n", "[region]\n", "anchors = 0.57273, 0.677385, 1.87446, 2.06253, 3.33843, 5.47434, 7.88282, 3.52778, 9.77052, 9.16828\n", "bias_match=1\n", "classes=" + str(int(float(classes_count))) + "\n", "coords=4\n", "num=5\n", "softmax=1\n", "jitter=.2\n", "rescore=0\n\n", "object_scale=5\n", "noobject_scale=1\n", "class_scale=1\n", "coord_scale=1\n\n", "absolute=1\n", "thresh = .6\n", "random=1"]
     f.writelines(cfg_content)
@@ -43,7 +43,7 @@ def generate_training_bash():
         CMD_SEP + TRAIN_PROJECT_CFG + CMD_SEP + TRAIN_MODEL_PATH + \
         CMD_SEP + EVAL_EPOCH + CMD_SEP + BATCH_SIZE
 
-    f = open("/content/toolkit/" + conf_directory_name + "/start-train.sh", "w")
+    f = open("/content/toolkit/" + conf_directory_name + "/" + project_name + "/start-train.sh", "w")
     train_check_content = [
         "nohup " + TRAINING_FULL_COMMAND + " > " + current_directory_path + "/" +
         conf_directory_name + "/" + project_name + "/" + "nohup.log 2>&1 &\n",
@@ -72,7 +72,7 @@ def generate_testing_bash():
     TRAINING_FULL_COMMAND = TRAIN_CLI + CMD_SEP + TRAIN_PARAMETER + CMD_SEP + \
         TRAIN_PROJECT_DATA + CMD_SEP + TRAINED_MODEL + CMD_SEP + OTHER
 
-    f = open(current_directory_path + "/" + conf_directory_name + "/test-train.sh", "w")
+    f = open(current_directory_path + "/" + conf_directory_name + "/" + project_name + "/test-train.sh", "w")
     bash_content = [
         # "cd "+CURRENT_DIR+"/tools\n",
         # "FILE='./"+name+"_test_result.log'\n",
@@ -102,7 +102,7 @@ def generate_testing_bash():
     f.close()
 
 def generate_subprocess_check_py():
-	f = open(current_directory_path + "/" + conf_directory_name+ "/train.py", "w")
+	f = open(current_directory_path + "/" + conf_directory_name + "/" + project_name + "/train.py", "w")
 	train_check_content = [
 		"import subprocess, shlex, os, signal\n",
 		"\n",
