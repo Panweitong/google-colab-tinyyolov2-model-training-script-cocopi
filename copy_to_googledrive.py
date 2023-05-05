@@ -16,7 +16,9 @@ if not os.path.exists("/content/toolkit/out/" + project_name + "/images"):
             os.system("cp /content/toolkit/data/custom/" + project_name + + "/JPEGImages/" + imgName + ".jpg  /content/toolkit/out/" + project_name + "/images")
 
 try:
-	copyfile("/content/toolkit/out/"+ project_name +".kmodel", google_drive_path + project_name +".kmodel")
+	copyfile("/content/toolkit/out/"+ project_name +"/model/yolov2_among.bin", google_drive_path + project_name +"/" + project_name + ".bin")
+	copyfile("/content/toolkit/out/"+ project_name +"/model/yolov2_among.param", google_drive_path + project_name +"/" + project_name + ".param")
+	copyfile("/content/toolkit/out/"+ project_name +"/model/images/" + imgName + ".jpg", google_drive_path + project_name +"/images/"  + imgName + ".jpg")
 except IOError as e:
 	print("Something went wrong:\n")
 	print(str(e))
