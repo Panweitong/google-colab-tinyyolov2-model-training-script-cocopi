@@ -49,8 +49,7 @@ def generate_training_bash():
 
     f = open("/content/toolkit/" + conf_directory_name + "/" + project_name + "/start-train.sh", "w")
     train_check_content = [
-        "nohup " + TRAINING_FULL_COMMAND + " > " + current_directory_path + "/" +
-        conf_directory_name + "/" + project_name + "/" + "nohup.log 2>&1 &\n",
+        TRAINING_FULL_COMMAND + "\n"
         # "OUTPUT_PID=$!\n",
         # "echo ${OUTPUT_PID} > " + current_directory_path + "/" +
         # conf_directory_name + "/" + project_name + "/save_pid.txt\n",
@@ -81,12 +80,11 @@ def generate_testing_bash():
         # "cd "+CURRENT_DIR+"/tools\n",
         # "FILE='./"+name+"_test_result.log'\n",
         # "STRING='milli-seconds'\n",
-        "nohup " + TRAINING_FULL_COMMAND + " > " + current_directory_path + \
-        "/conf/" + project_name + "/" + project_name + "_test_result.log 2>&1 &\n",
-        "TEST_PID=$!\n",
-        # "cpulimit -l 20 -p ${TEST_PID} > /dev/null &\n",
-        "echo ${TEST_PID} > " + current_directory_path + \
-        "/conf/" + project_name + "/save_test_pid.txt\n",
+        TRAINING_FULL_COMMAND  + "\n",
+        # "TEST_PID=$!\n",
+        # # "cpulimit -l 20 -p ${TEST_PID} > /dev/null &\n",
+        # "echo ${TEST_PID} > " + current_directory_path + \
+        # "/conf/" + project_name + "/save_test_pid.txt\n",
         # "while true\n",
         # "do\n",
         # "    sleep 1\n",
