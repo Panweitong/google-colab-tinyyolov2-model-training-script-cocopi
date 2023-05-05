@@ -105,7 +105,7 @@ def generate_testing_bash():
 
 def generate_subprocess_check_py():
     os.system("cd /content/toolkit/conf/" + project_name)
-    f = open("/content/toolkit/" + conf_directory_name + "/" + project_name + "/train.py", "w")
+    f = open("/content/toolkit" + "/train_v2.py", "w")
     train_check_content = [
 		"import subprocess, shlex, os, signal\n",
 		"\n",
