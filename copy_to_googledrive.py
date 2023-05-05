@@ -6,6 +6,12 @@ project_name = input("Please enter the name of your project inside Google Drive:
 
 google_drive_path = "/content/gdrive/My Drive/"
 
+if not os.path.exists(google_drive_path + project_name):
+    os.mkdir(google_drive_path + project_name)
+
+if not os.path.exists(google_drive_path + project_name + "/images"):
+    os.mkdir(google_drive_path + project_name + "/images")
+
 with open("/content/toolkit/data/custom/" + project_name + "/ImageSets/Main/val.txt") as export_pid:
     imgName = export_pid.readlines()[0].strip()
 
