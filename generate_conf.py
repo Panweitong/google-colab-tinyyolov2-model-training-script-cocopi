@@ -104,7 +104,7 @@ def generate_testing_bash():
     f.close()
 
 def generate_exporting_bash():
-    TRAIN_CLI = "python ./v831_yolo/test.py"
+    TRAIN_CLI = "python " + current_directory_path + "/test.py"
     TRAIN_PARAMETER = "-d custom -v slim_yolo_v2"
     TRAIN_PROJECT_DATA = "--dataset_folder " + google_drive_path + project_name
     TRAINED_MODEL = "--trained_model " + current_directory_path + \
