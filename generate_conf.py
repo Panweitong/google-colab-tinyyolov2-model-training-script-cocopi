@@ -31,7 +31,7 @@ def generate_training_bash():
             image_count_sum += 1
 
     TRAIN_CLI = "python " + current_directory_path + "/train.py"
-    TRAIN_PARAMETER = "-d custom --cuda -v slim_yolo_v2 -hr -ms --num_workers 2"
+    TRAIN_PARAMETER = "-d custom -v slim_yolo_v2 -hr -ms --num_workers 2"
     TRAIN_PROJECT_DATA = "--dataset_folder " + google_drive_path + project_name
     TRAIN_PROJECT_CFG = "--max_epoch " + str(max_batches)
     TRAIN_MODEL_PATH = "--save_folder " + \
