@@ -104,7 +104,6 @@ def generate_testing_bash():
     f.close()
 
 def generate_subprocess_check_py():
-    os.system("cd /content/toolkit/conf/" + project_name)
     f = open("/content/toolkit" + "/train_v2.py", "w")
     train_check_content = [
 		"import subprocess, shlex, os, signal\n",
@@ -134,6 +133,7 @@ def generate_subprocess_check_py():
 		"	os.kill(int(process.pid)+1, signal.SIGKILL)\n",
 		"\n",
 		"try:\n",
+        "   os.system(\"cd /content/toolkit/conf/" + project_name + "\")\n",
 		"	run_command(\"bash start-train.sh\")\n",
 		"except KeyboardInterrupt:\n",
 		"	print(\"Keyboard Interrupted.\")\n",
