@@ -13,7 +13,7 @@ if not os.path.exists("/content/toolkit/out/" + project_name + "/images"):
     os.mkdir("/content/toolkit/out/" + project_name + "/images")
     for item in os.listdir("/content/toolkit/data/custom/" + project_name + "/JPEGImages"):
         if item == imgName + ".jpg":
-            os.system("cp /content/toolkit/data/custom/" + project_name + + "/JPEGImages/" + imgName + ".jpg  /content/toolkit/out/" + project_name + "/images")
+            os.system("cp /content/toolkit/data/custom/" + project_name + "/JPEGImages/" + imgName + ".jpg  /content/toolkit/out/" + project_name + "/images")
 
 try:
 	copyfile("/content/toolkit/out/"+ project_name +"/model/yolov2_among.bin", google_drive_path + project_name +"/" + project_name + ".bin")
