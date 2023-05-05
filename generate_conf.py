@@ -103,6 +103,46 @@ def generate_testing_bash():
     f.writelines(bash_content)
     f.close()
 
+def generate_exporting_bash():
+    TRAIN_CLI = "python ./v831_yolo/test.py"
+    TRAIN_PARAMETER = "-d custom -v slim_yolo_v2"
+    TRAIN_PROJECT_DATA = "--dataset_folder " + google_drive_path + project_name
+    TRAINED_MODEL = "--trained_model " + current_directory_path + \
+        "/weights/custom/" + project_name + "/slim_yolo_v2_last.pth"
+    OTHER = "--visual_threshold 0.3 -size 224 --export --export_result_folder " + current_directory_path + "/out/" + project_name + "/model"
+    ImagePath = "--test_folder " + current_directory_path + "/out/" + project_name + "/images"
+    CMD_SEP = " "
+
+    TRAINING_FULL_COMMAND = TRAIN_CLI + CMD_SEP + TRAIN_PARAMETER + CMD_SEP + TRAIN_PROJECT_DATA + CMD_SEP + TRAINED_MODEL + CMD_SEP + OTHER + CMD_SEP + ImagePath
+
+    f = open(current_directory_path + "/" + conf_directory_name + "/" + project_name  + "/export.sh", "w")
+
+    bash_content = [
+        # "cd "+CURRENT_DIR+"/tools\n",
+        # "FILE='./"+name+"_test_result.log'\n",
+        # "STRING='milli-seconds'\n",
+        TRAINING_FULL_COMMAND + "\n",
+        # "TEST_PID=$!\n",
+        # "cpulimit -l 20 -p ${TEST_PID} > /dev/null &\n",
+        # "echo ${TEST_PID} > " + CURRENT_DIR + "/tools/v831_yolo/conf/" + project_name + "/export_pid.txt\n",
+        # "while true\n",
+        # "do\n",
+        # "    sleep 1\n",
+        # "    if  grep -q $STRING $FILE ; then\n",
+        # "        echo 'Done testing' ;\n",
+        # "        kill -9 $TEST_PID\n",
+        # "        sleep 2\n",
+        # "        break\n",
+        # "    fi\n",
+        # "done\n",
+        "sleep 8\n",
+        # "cp "+name+"_test_result.log "+CURRENT_DIR+ "/toolkit/conf/" + name + "/\n",
+        # "cp predictions.jpg "+CURRENT_DIR+ "/toolkit/conf/" + name + "/"+name+"predictions.jpg\n",
+        # "cd "+CURRENT_DIR+"\n"
+    ]
+    f.writelines(bash_content)
+    f.close()
+
 def generate_subprocess_check_py():
     f = open("/content/toolkit" + "/train_v2.py", "w")
     train_check_content = [
@@ -146,7 +186,8 @@ def generate_subprocess_check_py():
 
 if __name__ == '__main__':
 	# shenzhen_trash_classification_sign_dataset
-	generate_cfg()
-	generate_training_bash()
-	generate_testing_bash()
-	generate_subprocess_check_py()
+    generate_cfg()
+    generate_training_bash()
+    generate_testing_bash()
+    generate_exporting_bash()
+    generate_subprocess_check_py()
