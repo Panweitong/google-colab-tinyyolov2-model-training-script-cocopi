@@ -136,6 +136,7 @@ def generate_subprocess_check_py():
 		"\n",
 		"try:\n",
 		"	run_command(\"bash start-train.sh\")\n",
+        "   os.system(\"cd /content/toolkit/conf/\"" + project_name + ")\n"
 		"except KeyboardInterrupt:\n",
 		"	print(\"Keyboard Interrupted.\")\n",
 		"\n",
