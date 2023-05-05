@@ -85,10 +85,3 @@ def h5_to_tftile(onnx_input_path="out/model.h5", pb_output_path="out/model.tflit
     tflite_model = converter.convert()
     with open(pb_output_path,'wb') as f:
         f.write(tflite_model)
-
-def ncnn_to_awnn(ncnn_param="out/conv0.param", ncnn_bin = "out/conv0.bin", imagePath="/out/images",outputPath="data/custom/"):
-    import os
-    print(os.getcwd())
-    CURRENT_DIR = os.getcwd()
-    cmd = CURRENT_DIR + "/v831_yolo/convert/spnntools optimize " + ncnn_param + " " + ncnn_bin + " " + outputPath + "/opt.param " + outputPath + "/opt.bin && " + CURRENT_DIR + "/v831_yolo/convert/spnntools calibrate -p=" + outputPath + "/opt.param -b=" + outputPath + "/opt.bin -i=" + imagePath + " -o=" + outputPath + "/opt.table -m=127.5,127.5,127.5 -n=0.0078125,0.0078125,0.0078125 -c=swapRB -t=3 &&  "+ CURRENT_DIR + "/v831_yolo/convert/spnntools quantize " + outputPath + "/opt.param " + outputPath + "/opt.bin " + outputPath + "/yolov2.param " + outputPath + "/yolov2.bin " + outputPath + "/opt.table" 
-    os.system(cmd)

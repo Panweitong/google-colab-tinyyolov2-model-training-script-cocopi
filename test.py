@@ -258,7 +258,6 @@ if __name__ == '__main__':
         with torch.no_grad():
             torch_to_onnx(net.to("cpu"), input_shape, onnx_out, device="cpu")
             onnx_to_ncnn(input_shape, onnx=onnx_out, ncnn_param=ncnn_out_param, ncnn_bin=ncnn_out_bin)
-            ncnn_to_awnn(ncnn_param=ncnn_out_param,ncnn_bin=ncnn_out_bin,imagePath=args.test_folder,outputPath=args.export_result_folder)
             print("convert end, ctrl-c to exit")
     net.no_post_process = False
 
