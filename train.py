@@ -141,6 +141,7 @@ def train():
     print("Setting Arguments.. : ", args)
     print("----------------------------------------------------------")
     print('Loading the dataset...')
+    print(args.dataset)
 
     if args.dataset == 'voc':
         data_dir = VOC_ROOT

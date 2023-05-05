@@ -49,7 +49,7 @@ def generate_training_bash():
 
     f = open("/content/toolkit/" + conf_directory_name + "/" + project_name + "/start-train.sh", "w")
     train_check_content = [
-        TRAINING_FULL_COMMAND + "\n"
+        TRAINING_FULL_COMMAND + ""
         # "OUTPUT_PID=$!\n",
         # "echo ${OUTPUT_PID} > " + current_directory_path + "/" +
         # conf_directory_name + "/" + project_name + "/save_pid.txt\n",
