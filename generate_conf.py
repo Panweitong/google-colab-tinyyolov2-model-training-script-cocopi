@@ -104,8 +104,9 @@ def generate_testing_bash():
     f.close()
 
 def generate_subprocess_check_py():
-	f = open(current_directory_path + "/" + conf_directory_name + "/" + project_name + "/train.py", "w")
-	train_check_content = [
+    os.system("cd /content/toolkit/conf/" + project_name)
+    f = open("/content/toolkit/" + conf_directory_name + "/" + project_name + "/train.py", "w")
+    train_check_content = [
 		"import subprocess, shlex, os, signal\n",
 		"\n",
 		"def run_command(command):\n",
@@ -145,8 +146,8 @@ def generate_subprocess_check_py():
 		" |____/ \\___/|_| |_|\\___(_)\n",
 		"	\"\"\")\n"
 	]
-	f.writelines(train_check_content)
-	f.close()
+    f.writelines(train_check_content)
+    f.close()
 
 
 if __name__ == '__main__':
