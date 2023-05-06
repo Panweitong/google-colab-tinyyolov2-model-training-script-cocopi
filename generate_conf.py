@@ -144,7 +144,7 @@ def generate_exporting_bash():
     f.close()
 
 def generate_subprocess_check_py():
-    f = open("/content/toolkit" + "/train_v2.py", "w")
+    f = open(current_directory_path + "/" + conf_directory_name + "/" + project_name + "/train.py", "w")
     train_check_content = [
 		"import subprocess, shlex, os, signal\n",
 		"\n",
