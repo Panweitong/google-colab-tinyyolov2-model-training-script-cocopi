@@ -161,6 +161,7 @@ def generate_subprocess_check_py():
 		"		if output:\n",
 		"			formatted_output = output.strip().decode(\"utf-8\")\n",
         "			print(formatted_output)\n",
+        "			if formatted_output.split(\"Epoch \")[1].split(\"/\")[0] == " + max_batches + ": break\n",
 		"	# process.terminate()\n",
 		"	process.terminate()\n",
 		"	try:\n",
