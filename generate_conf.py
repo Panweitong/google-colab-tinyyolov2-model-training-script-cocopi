@@ -10,6 +10,7 @@ current_directory_path = os.getcwd()
 
 max_batches = input("Please enter the max batches you would like to train: \n")
 
+Type = input("Please enter to use GPU or CPU you would like to train: \n")
 
 def generate_cfg():
     if project_name in os.listdir("/content/toolkit/" + conf_directory_name):
@@ -31,10 +32,13 @@ def generate_training_bash():
             image_count_sum += 1
 
     TRAIN_CLI = "python " + current_directory_path + "/train.py"
-    ## use GPU
-    # TRAIN_PARAMETER = "-d custom --cuda -v slim_yolo_v2 -hr -ms --num_workers 2"
-    ## use CPU
-    TRAIN_PARAMETER = "-d custom -v slim_yolo_v2 -hr -ms --num_workers 2"
+    TRAIN_PARAMETER = ''
+    if Type == "GPU":
+        # use GPU
+        TRAIN_PARAMETER = "-d custom --cuda -v slim_yolo_v2 -hr -ms --num_workers 2"
+    elif Type == "CPU":
+        # use CPU
+        TRAIN_PARAMETER = "-d custom -v slim_yolo_v2 -hr -ms --num_workers 2"
     TRAIN_PROJECT_DATA = "--dataset_folder " + google_drive_path + project_name
     TRAIN_PROJECT_CFG = "--max_epoch " + str(max_batches)
     TRAIN_MODEL_PATH = "--save_folder " + \
