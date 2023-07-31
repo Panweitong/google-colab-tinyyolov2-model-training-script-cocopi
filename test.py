@@ -257,7 +257,7 @@ if __name__ == '__main__':
             os.makedirs(args.export_result_folder)
         with torch.no_grad():
             torch_to_onnx(net.to("cpu"), input_shape, onnx_out, device="cpu")
-            onnx_to_ncnn(input_shape, onnx=onnx_out, ncnn_param=ncnn_out_param, ncnn_bin=ncnn_out_bin)
+            # onnx_to_ncnn(input_shape, onnx=onnx_out, ncnn_param=ncnn_out_param, ncnn_bin=ncnn_out_bin)
             print("convert end, ctrl-c to exit")
     net.no_post_process = False
 
