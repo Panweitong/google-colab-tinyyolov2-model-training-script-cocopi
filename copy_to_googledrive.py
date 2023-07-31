@@ -30,8 +30,9 @@ if not os.path.exists("/content/toolkit/out/" + project_name + "/" + project_nam
   os.mkdir("/content/toolkit/out/" + project_name + "/" + project_name+ "/images")
 
 try:
-	copyfile("/content/toolkit/out/" + project_name + "/model/yolov2_among.bin","/content/toolkit/out/" + project_name + "/" + project_name + "/" + project_name + ".bin")
-	copyfile("/content/toolkit/out/" + project_name + "/model/yolov2_among.param","/content/toolkit/out/" + project_name + "/" + project_name + "/" + project_name + ".param")
+	# copyfile("/content/toolkit/out/" + project_name + "/model/yolov2_among.bin","/content/toolkit/out/" + project_name + "/" + project_name + "/" + project_name + ".bin")
+	# copyfile("/content/toolkit/out/" + project_name + "/model/yolov2_among.param","/content/toolkit/out/" + project_name + "/" + project_name + "/" + project_name + ".param")
+	copyfile("/content/toolkit/out/" + project_name + "/model/yolov2.onnx","/content/toolkit/out/" + project_name + "/" + project_name + "/" + project_name + ".onnx")
 	copyfile("/content/toolkit/out/" + project_name + "/images/" + imgName + ".jpg","/content/toolkit/out/" + project_name + "/" + project_name + "/images/" + imgName + ".jpg")
 except IOError as e:
 	print("Something went wrong:\n")
